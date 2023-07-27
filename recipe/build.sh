@@ -163,7 +163,7 @@ fi
 #    https://github.com/scikit-learn/scikit-learn/issues/636
 #USE_SIMPLE_THREADED_LEVEL3=1
 
-make ${build_opts[@]} \
+make -j32 ${build_opts[@]} \
      HOST=${HOST} CROSS_SUFFIX="${HOST}-" \
      CFLAGS="${CF}" FFLAGS="${FFLAGS}"
 
@@ -171,7 +171,7 @@ make ${build_opts[@]} \
 # be separately built and run.
 #OPENBLAS_NUM_THREADS=${CPU_COUNT} CFLAGS="${CF}" FFLAGS="${FFLAGS}" make test
 OPENBLAS_NUM_THREADS=${CPU_COUNT} CFLAGS="${CF}" FFLAGS="${FFLAGS}" \
-    make lapack-test ${build_opts[@]}
+    make -j32 lapack-test ${build_opts[@]}
 
 CFLAGS="${CF}" FFLAGS="${FFLAGS}" \
     make install PREFIX="${PREFIX}" ${build_opts[@]}
