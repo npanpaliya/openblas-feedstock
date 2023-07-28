@@ -112,7 +112,7 @@ build_opts+=(NO_LAPACK=0)
 # Enable threading. This can be controlled to a certain number by
 # setting OPENBLAS_NUM_THREADS before loading the library.
 build_opts+=(USE_THREAD=1)
-build_opts+=(NUM_THREADS=128)
+build_opts+=(NUM_THREADS=8)
 
 # Disable CPU/memory affinity handling to avoid problems with NumPy and R
 build_opts+=(NO_AFFINITY=1)
@@ -163,7 +163,7 @@ fi
 #    https://github.com/scikit-learn/scikit-learn/issues/636
 #USE_SIMPLE_THREADED_LEVEL3=1
 
-make -j16 ${build_opts[@]} \
+make -j8 ${build_opts[@]} \
      HOST=${HOST} CROSS_SUFFIX="${HOST}-" \
      CFLAGS="${CF}" FFLAGS="${FFLAGS}"
 
