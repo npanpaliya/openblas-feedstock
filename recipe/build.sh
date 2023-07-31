@@ -170,8 +170,8 @@ make -j8 ${build_opts[@]} \
 # BLAS tests are now run as part of build process; LAPACK tests still need to
 # be separately built and run.
 #OPENBLAS_NUM_THREADS=${CPU_COUNT} CFLAGS="${CF}" FFLAGS="${FFLAGS}" make test
-#OPENBLAS_NUM_THREADS=16 CFLAGS="${CF}" FFLAGS="${FFLAGS}" \
-#    make -j16 lapack-test ${build_opts[@]}
+OPENBLAS_NUM_THREADS=8 CFLAGS="${CF}" FFLAGS="${FFLAGS}" \
+    make -j8 lapack-test ${build_opts[@]}
 
 CFLAGS="${CF}" FFLAGS="${FFLAGS}" \
     make install PREFIX="${PREFIX}" ${build_opts[@]}
